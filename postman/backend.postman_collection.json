@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "4b778a06-5f65-4f07-8160-e64f8c70ea03",
+		"name": "backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36630423"
+	},
+	"item": [
+		{
+			"name": "Sample",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/samples",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"samples"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
