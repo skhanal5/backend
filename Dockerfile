@@ -6,22 +6,29 @@ FROM maven:3.9.6-amazoncorretto-21 AS build
 WORKDIR /project
 
 # Move only necessary files over
-COPY src .
+COPY src src
 COPY pom.xml .
 
 # Package everything
 RUN mvn clean package -DskipTests
 
-# Production ready  stage
-FROM amazoncorreto:21
+# Production ready stage
+FROM amazoncorretto:21
 
 WORKDIR /app
 
+# Install this to create user
+RUN yum -y install shadow-utils
+
+# Create non-privileged user
+RUN groupadd -r user && useradd -r -g user user
+RUN chown -R user /app
+
 # Copy JAR over
-COPY --from=build /project/*.jar app.jar
+COPY --from=build /project/target/*.jar app.jar
 
 # Best practice: Run app as non-root user
-RUN groupadd -r user && useradd -r -g user user
 USER user
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
