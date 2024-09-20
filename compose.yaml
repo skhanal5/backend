@@ -12,4 +12,4 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
     volumes: #persists data
       - ./db_init.sql:/docker-entrypoint-initdb.d/db_init.sql
-      - ./pgdata:/var/lib/postgresql/data
+     # - ./pgdata:/var/lib/postgresql/data
