@@ -17,8 +17,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.IOException;
-
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
 
@@ -26,18 +24,14 @@ public class UserControllerTest {
 
   @MockBean private UserRepository userRepository;
 
-
   @Test
   public void testInsertUserHappyPath() throws Exception {
     var requestBody = ResourceFetcher.getResourceFileAsString("user_request.json");
-    var insertedUser = new User("","","");
+    var insertedUser = new User("", "", "");
     when(userRepository.save(any())).thenReturn(insertedUser);
 
     mockMvc
-        .perform(
-            post("/api/v1/user")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(requestBody))
+        .perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(requestBody))
         .andExpect(status().isOk())
         .andExpect(content().string("Successfully added user"));
   }
@@ -45,13 +39,10 @@ public class UserControllerTest {
   @Test
   public void testInsertUserUnhappyPath() throws Exception {
     var requestBody = ResourceFetcher.getResourceFileAsString("user_request.json");
-    when(userRepository.save(any())).thenThrow(new DataAccessException("foo"){});
+    when(userRepository.save(any())).thenThrow(new DataAccessException("foo") {});
 
     mockMvc
-            .perform(
-                    post("/api/v1/user")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(requestBody))
-            .andExpect(status().isInternalServerError());
+        .perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(requestBody))
+        .andExpect(status().isInternalServerError());
   }
 }

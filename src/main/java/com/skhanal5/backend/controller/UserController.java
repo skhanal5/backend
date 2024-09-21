@@ -1,8 +1,8 @@
 package com.skhanal5.backend.controller;
 
+import com.skhanal5.backend.entity.User;
 import com.skhanal5.backend.model.UserRequest;
 import com.skhanal5.backend.repository.UserRepository;
-import com.skhanal5.backend.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,5 @@ public class UserController {
 
   @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
   @ExceptionHandler(DataAccessException.class)
-  public void handleRepositoryExceptions() {
-
-  }
+  public void handleRepositoryExceptions() {}
 }
