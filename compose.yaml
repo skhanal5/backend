@@ -1,0 +1,15 @@
+services:
+  postgresql:
+    image: 'postgres'
+    restart: always
+    container_name: 'backend-db'
+    hostname: localhost
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes: #persists data
+      - ./db_init.sql:/docker-entrypoint-initdb.d/db_init.sql
+     # - ./pgdata:/var/lib/postgresql/data

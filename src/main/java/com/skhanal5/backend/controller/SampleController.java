@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class SampleController {
 
-    @GetMapping("/samples")
-    public Sample getSamples() {
-        return new Sample("1","foo");
-    }
-
+  @GetMapping("/samples")
+  public Sample getSamples() {
+    return new Sample("1", "foo");
+  }
 }
