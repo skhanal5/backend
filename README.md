@@ -1,4 +1,4 @@
-# Backend
+# spring-api-refapp
 
 ### About
 Designing a Spring Boot backend application. The overall goal of the project is to learn more about
