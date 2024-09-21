@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Sample {
-    String id;
-    String name;
+  String id;
+  String name;
 }

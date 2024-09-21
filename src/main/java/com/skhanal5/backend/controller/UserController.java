@@ -1,7 +1,8 @@
 package com.skhanal5.backend.controller;
 
-import com.skhanal5.backend.model.User;
+import com.skhanal5.backend.model.UserRequest;
 import com.skhanal5.backend.repository.UserRepository;
+import com.skhanal5.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
-    @PostMapping("/user")
-    public void insertUser(@RequestBody User user) {
-        userRepository.save(user);
-    }
-
+  @PostMapping("/user")
+  public void insertUser(@RequestBody UserRequest userRequest) {
+    var newUser =
+        new User(
+            userRequest.getEmailAddress(), userRequest.getFirstName(), userRequest.getLastName());
+    userRepository.save(newUser);
+  }
 }
