@@ -1,6 +1,6 @@
 package com.skhanal5.backend.repository;
 
-import com.skhanal5.entity.User;
+import com.skhanal5.backend.entity.User;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 

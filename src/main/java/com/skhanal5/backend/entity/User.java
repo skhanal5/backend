@@ -1,4 +1,4 @@
-package com.skhanal5.entity;
+package com.skhanal5.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
