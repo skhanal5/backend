@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skhanal5</groupId>
-	<artifactId>backend</artifactId>
+	<artifactId>spring-api-refapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>backend</name>
 	<description>A spring backend</description>
