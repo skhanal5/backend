@@ -10,7 +10,7 @@ COPY src src
 COPY pom.xml .
 
 # Package everything
-RUN mvn clean package -DskipTests
+RUN mvn clean package
 
 # Production ready stage
 FROM amazoncorretto:21
