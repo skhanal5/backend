@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRequest {
-  @JsonProperty("email_address")
-  String emailAddress;
+	@JsonProperty("email_address")
+	String emailAddress;
 
-  @JsonProperty("first_name")
-  String firstName;
+	@JsonProperty("first_name")
+	String firstName;
 
-  @JsonProperty("last_name")
-  String lastName;
+	@JsonProperty("last_name")
+	String lastName;
 }

@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 public class UserController {
 
-  @Autowired private UserRepository userRepository;
+	@Autowired private UserRepository userRepository;
 
-  @PostMapping("/user")
-  public String insertUser(@RequestBody UserRequest userRequest) {
-    var newUser =
-        new User(
-            userRequest.getEmailAddress(), userRequest.getFirstName(), userRequest.getLastName());
+	@PostMapping("/user")
+	public String insertUser(@RequestBody UserRequest userRequest) {
+		var newUser =
+				new User(
+						userRequest.getEmailAddress(), userRequest.getFirstName(), userRequest.getLastName());
 
-    userRepository.save(newUser);
-    return "Successfully added user";
-  }
+		userRepository.save(newUser);
+		return "Successfully added user";
+	}
 
-  @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-  @ExceptionHandler(DataAccessException.class)
-  public void handleRepositoryExceptions() {}
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(DataAccessException.class)
+	public void handleRepositoryExceptions() {}
 }
