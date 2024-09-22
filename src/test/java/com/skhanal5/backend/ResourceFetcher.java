@@ -8,9 +8,9 @@ import org.springframework.core.io.Resource;
 
 public class ResourceFetcher {
 
-  public static String getResourceFileAsString(String fileName) throws IOException {
-    Resource resource = new ClassPathResource(fileName);
-    File file = resource.getFile();
-    return new String(Files.readAllBytes(file.toPath()));
-  }
+	public static String getResourceFileAsString(String fileName) throws IOException {
+		Resource resource = new ClassPathResource(fileName);
+		File file = resource.getFile();
+		return new String(Files.readAllBytes(file.toPath()));
+	}
 }

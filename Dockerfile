@@ -10,7 +10,7 @@ COPY src src
 COPY pom.xml .
 
 # Package everything
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests=true
 
 # Production ready stage
 FROM amazoncorretto:21
@@ -26,6 +26,10 @@ RUN chown -R user /app
 
 # Copy JAR over
 COPY --from=build /project/target/*.jar app.jar
+
+ENV DATABASE_URL DATABASE_URL
+ENV DATABASE_USER DATABASE_USER
+ENV DATABASE_PASSWORD DATABASE_PASSWORD
 
 # Best practice: Run app as non-root user
 USER user

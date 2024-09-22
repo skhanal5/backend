@@ -6,29 +6,36 @@ Spring Boot and the different features it offers (e.g., Spring MVC, JPA, Securit
 
 ### Local Development
 
-#### Running the Database
+#### Running the Application Using Docker
 
-Use the provided `compose.yaml` file to run the PostgresSQL via Docker. It will run on port `5433` on your local machine.
-You will need to configure the following environment variables in the YAML file:
+Use the provided `compose.yaml` file to run the application. It defines two services, the API and the database service that
+the API depends on. 
 
-```bash
-      POSTGRES_USER: ${DATABASE_USER}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+For both services to build, you will need to define the following environment variables:
+```yaml
+DATABASE_USER
+DATABASE_PASSWORD
+DATABASE_NAME
+DATABASE_URL
 ```
 
-Once that is set up, build the services:
+One easy way of doing this is by defining an `.env` file in the root project directory like so:
+```bash
+  DATABASE_USER=<username>
+  DATABASE_PASSWORD=<password>
+  DATABASE_NAME=<tablename>
+  DATABASE_URL=jdbc:postgresql://postgresql:5432/<tablename>
+```
 
+Once that is set up, build the services with the following commands:
 ```bash
     docker compose down
     docker compose build
     docker compose up
 ```
 
-If you read the log output, you will notice that the `db_init.sql` script runs on initialization of the Docker container.
-This script will create the basic table that corresponds to the `User` Entity.
 
-#### Running the Application
+#### Running the Application Manually
 The application.properties files expects the following environment variables which correspond to your PostgresSQL configuration:
 
 ```bash
@@ -37,7 +44,8 @@ spring.datasource.username=${DATABASE_USER}
 spring.datasource.password=${DATABASE_PASSWORD}
 ```
 
-Once that is set up, run `mvn spring-boot:run` in your terminal to start the applications.
+Once that is set up, run `mvn spring-boot:run` in your terminal to start the application. This requires the corresponding
+database to be up and running already beforehand.
 
 #### Postman
 This project includes a Postman

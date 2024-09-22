@@ -7,33 +7,33 @@
 	},
 	"item": [
 		{
-			"name": "Sample",
+			"name": "Actuator Health Endpoint",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/samples",
+					"raw": "http://localhost:8080/actuator/health",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
-						"samples"
+						"actuator",
+						"health"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Sample Copy",
+			"name": "Insert User",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"email_address\": \"foo\",\r\n    \"first_name\": \"foo\",\r\n    \"last_name\": \"bar\"\r\n}",
+					"raw": "{\r\n    \"email_address\": \"foo\",\r\n    \"first_name\": \"foo\",\r\n    \"last_name\": \"bar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

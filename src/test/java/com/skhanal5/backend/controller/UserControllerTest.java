@@ -20,29 +20,29 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
 
-  @Autowired private MockMvc mockMvc;
+	@Autowired private MockMvc mockMvc;
 
-  @MockBean private UserRepository userRepository;
+	@MockBean private UserRepository userRepository;
 
-  @Test
-  public void testInsertUserHappyPath() throws Exception {
-    var requestBody = ResourceFetcher.getResourceFileAsString("user_request.json");
-    var insertedUser = new User("", "", "");
-    when(userRepository.save(any())).thenReturn(insertedUser);
+	@Test
+	public void testInsertUserHappyPath() throws Exception {
+		var requestBody = ResourceFetcher.getResourceFileAsString("user_request.json");
+		var insertedUser = new User("", "", "");
+		when(userRepository.save(any())).thenReturn(insertedUser);
 
-    mockMvc
-        .perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(requestBody))
-        .andExpect(status().isOk())
-        .andExpect(content().string("Successfully added user"));
-  }
+		mockMvc
+				.perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(requestBody))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Successfully added user"));
+	}
 
-  @Test
-  public void testInsertUserUnhappyPath() throws Exception {
-    var requestBody = ResourceFetcher.getResourceFileAsString("user_request.json");
-    when(userRepository.save(any())).thenThrow(new DataAccessException("foo") {});
+	@Test
+	public void testInsertUserUnhappyPath() throws Exception {
+		var requestBody = ResourceFetcher.getResourceFileAsString("user_request.json");
+		when(userRepository.save(any())).thenThrow(new DataAccessException("foo") {});
 
-    mockMvc
-        .perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(requestBody))
-        .andExpect(status().isInternalServerError());
-  }
+		mockMvc
+				.perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(requestBody))
+				.andExpect(status().isInternalServerError());
+	}
 }
