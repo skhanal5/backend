@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Getter
 public class LoginDetails {
-    @JsonProperty("email_address")
-    String emailAddress;
+	@JsonProperty("email_address")
+	String emailAddress;
 
-    @JsonProperty("password")
-    String password; // hash later
+	@JsonProperty("password")
+	String password; // hash later
 }
