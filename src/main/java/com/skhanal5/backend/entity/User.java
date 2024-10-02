@@ -1,5 +1,6 @@
 package com.skhanal5.backend.entity;
 
+import com.skhanal5.backend.model.AccountDetails;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,9 @@ public class User {
 	@Column(name = "email_address")
 	private String emailAddress;
 
+	@Column(name = "password")
+	private String password;
+
 	@Column(name = "first_name")
 	private String firstName;
 
@@ -25,9 +29,10 @@ public class User {
 
 	protected User() {}
 
-	public User(String emailAddress, String firstName, String lastName) {
-		this.emailAddress = emailAddress;
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public User(AccountDetails accountDetails) {
+		this.emailAddress = accountDetails.getEmailAddress();
+		this.password = accountDetails.getPassword();
+		this.firstName = accountDetails.getFirstName();
+		this.lastName = accountDetails.getLastName();
 	}
 }
