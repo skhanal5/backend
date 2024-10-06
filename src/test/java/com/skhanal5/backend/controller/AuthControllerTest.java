@@ -19,8 +19,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(RegistrationController.class)
-public class RegistrationControllerTest {
+@WebMvcTest(AuthController.class)
+public class AuthControllerTest {
 
 	@Autowired MockMvc mockMvc;
 
